@@ -4,7 +4,6 @@
 #
 %define		pdir	ExtUtils
 %define		pnam	CppGuess
-%include	/usr/lib/rpm/macros.perl
 Summary:	ExtUtils::CppGuess - guess C++ compiler and flags
 Name:		perl-ExtUtils-CppGuess
 Version:	0.09
