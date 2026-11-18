@@ -6,19 +6,21 @@
 %define		pnam	CppGuess
 Summary:	ExtUtils::CppGuess - guess C++ compiler and flags
 Name:		perl-ExtUtils-CppGuess
-Version:	0.09
-Release:	2
+Version:	0.271
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/ExtUtils/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	f8ada38ee4ad86a4f1e20d8525ce0c99
+Source0:	https://www.cpan.org/authors/id/E/ET/ETJ/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	cbc2a87e670a0879bd8d1d585242860e
 URL:		http://search.cpan.org/dist/ExtUtils-CppGuess/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
-%if %{with tests}
 BuildRequires:	perl-Capture-Tiny
+%if %{with tests}
+BuildRequires:	perl-Module-Build
 %endif
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,9 +37,7 @@ function.
 %build
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
-%{__make} \
-	CC="%{__cc}" \
-	OPTIMIZE="%{rpmcflags}"
+%{__make}
 
 %{?with_tests:%{__make} test}
 
